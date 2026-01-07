@@ -1,65 +1,118 @@
 const questions = [
-  {
-    question: "What color is the Nigerian flag?",
-    answers: ["Green & White", "Red & Blue", "Black & Yellow", "Green & Red"],
-    correct: 0
-  },
-  {
-    question: "How many days are in a leap year?",
-    answers: ["365", "366", "360", "364"],
-    correct: 1
-  },
-  {
-    question: "Which planet is closest to the sun?",
-    answers: ["Earth", "Venus", "Mercury", "Mars"],
-    correct: 2
-  }
-];
-
-let currentQuestion = 0;
-let score = 0;
-
-const questionEl = document.getElementById("question");
-const answersEl = document.getElementById("answers");
-const scoreEl = document.getElementById("score");
-const nextBtn = document.getElementById("next-btn");
-
-function loadQuestion() {
-  answersEl.innerHTML = "";
-  const q = questions[currentQuestion];
-  questionEl.textContent = q.question;
-
-  q.answers.forEach((answer, index) => {
-    const btn = document.createElement("button");
-    btn.textContent = answer;
-    btn.onclick = () => checkAnswer(index);
-    answersEl.appendChild(btn);
-  });
-}
-
-function checkAnswer(index) {
-  if (index === questions[currentQuestion].correct) {
-    score++;
-    scoreEl.textContent = "Score: " + score;
-  }
-  disableButtons();
-}
-
-function disableButtons() {
-  document.querySelectorAll("#answers button").forEach(btn => {
-    btn.disabled = true;
-  });
-}
-
-nextBtn.onclick = () => {
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    loadQuestion();
-  } else {
-    questionEl.textContent = "🎉 Quiz Finished!";
-    answersEl.innerHTML = "";
-    nextBtn.style.display = "none";
-  }
-};
-
-loadQuestion();
+  {question:"Which Nigerian musician is known as the 'King of Afrobeat'?",answers:["Davido","Burna Boy","Fela Kuti","Wizkid"],correct:2},
+  {question:"Which country won the 2022 FIFA World Cup?",answers:["Argentina","France","Brazil","Germany"],correct:0},
+  {question:"How many states are there in Nigeria?",answers:["36","37","35","34"],correct:0},
+  {question:"Which actor played Black Panther in the Marvel Cinematic Universe?",answers:["Michael B. Jordan","Chadwick Boseman","Idris Elba","Anthony Mackie"],correct:1},
+  {question:"Who is the current President of Nigeria as of 2026?",answers:["Bola Tinubu","Muhammadu Buhari","Atiku Abubakar","Goodluck Jonathan"],correct:0},
+  {question:"Which tree is the tallest in the world?",answers:["Sequoia","Baobab","Oak","Pine"],correct:0},
+  {question:"What is the capital city of Canada?",answers:["Toronto","Ottawa","Vancouver","Montreal"],correct:1},
+  {question:"Which element has the chemical symbol 'O'?",answers:["Oxygen","Gold","Osmium","Iron"],correct:0},
+  {question:"Which human organ produces insulin?",answers:["Liver","Pancreas","Kidney","Heart"],correct:1},
+  {question:"Which celebrity is known for the movie 'Pirates of the Caribbean'?",answers:["Orlando Bloom","Johnny Depp","Leonardo DiCaprio","Brad Pitt"],correct:1},
+  {question:"Which Nigerian musician won a Grammy in 2021 for Best Global Music Album?",answers:["Burna Boy","Wizkid","Tems","Davido"],correct:0},
+  {question:"Which sport is known as the 'king of sports'?",answers:["Basketball","Football (Soccer)","Tennis","Boxing"],correct:1},
+  {question:"Which Nigerian state has its capital at Umuahia?",answers:["Abia","Anambra","Akwa Ibom","Enugu"],correct:0},
+  {question:"Who won the Academy Award for Best Actor in 2023?",answers:["Will Smith","Brendan Fraser","Joaquin Phoenix","Austin Butler"],correct:1},
+  {question:"Which political party won the Nigerian 2023 general elections?",answers:["PDP","APC","LP","NNPP"],correct:1},
+  {question:"Which biome is characterized by very low temperatures and ice-covered landscapes?",answers:["Tundra","Savannah","Rainforest","Desert"],correct:0},
+  {question:"Which river is the longest in Africa?",answers:["Nile","Congo","Niger","Zambezi"],correct:0},
+  {question:"What is H2O more commonly known as?",answers:["Oxygen","Water","Hydrogen","Salt"],correct:1},
+  {question:"Which blood cells help fight infections?",answers:["Red Blood Cells","White Blood Cells","Platelets","Plasma"],correct:1},
+  {question:"Which celebrity is known for the TV series 'Stranger Things'?",answers:["Millie Bobby Brown","Emma Watson","Saoirse Ronan","Zendaya"],correct:0},
+  {question:"Which Nigerian artist released the album 'Twice as Tall'?",answers:["Wizkid","Burna Boy","Tems","Davido"],correct:1},
+  {question:"Which country has won the most Olympic gold medals in history?",answers:["China","USA","Russia","Germany"],correct:1},
+  {question:"Which Nigerian state is home to the city of Benin?",answers:["Edo","Delta","Ondo","Rivers"],correct:0},
+  {question:"Who played Joker in the 2019 movie 'Joker'?",answers:["Joaquin Phoenix","Heath Ledger","Jared Leto","Jack Nicholson"],correct:0},
+  {question:"Which political office is the second-highest in Nigeria?",answers:["Senate President","Vice President","Governor","Minister"],correct:1},
+  {question:"Which layer of the Earth is liquid and surrounds the core?",answers:["Crust","Mantle","Outer Core","Inner Core"],correct:2},
+  {question:"Which continent is known as the 'Dark Continent'?",answers:["Asia","Africa","Europe","South America"],correct:1},
+  {question:"What is the powerhouse of the cell?",answers:["Nucleus","Mitochondria","Ribosome","Golgi Apparatus"],correct:1},
+  {question:"Which celebrity is known for 'The Weeknd' stage name?",answers:["Abel Tesfaye","Khalid","Drake","Travis Scott"],correct:0},
+  {question:"Which Nigerian musician released 'Made in Lagos'?",answers:["Wizkid","Burna Boy","Tems","Davido"],correct:0},
+  {question:"Which country won the 2021 Africa Cup of Nations?",answers:["Senegal","Nigeria","Algeria","Egypt"],correct:0},
+  {question:"Which Nigerian state has its capital at Yola?",answers:["Adamawa","Bauchi","Borno","Kano"],correct:0},
+  {question:"Who starred as Spider-Man in the Marvel Cinematic Universe 2017-2021?",answers:["Andrew Garfield","Tom Holland","Tobey Maguire","Jake Johnson"],correct:1},
+  {question:"Which political party is Atiku Abubakar affiliated with?",answers:["APC","PDP","LP","NNPP"],correct:1},
+  {question:"Which desert is the largest in the world?",answers:["Sahara","Gobi","Kalahari","Arabian"],correct:0},
+  {question:"Which African river is famous for its delta in Nigeria?",answers:["Niger","Congo","Zambezi","Volta"],correct:0},
+  {question:"What gas do plants absorb during photosynthesis?",answers:["Oxygen","Nitrogen","Carbon Dioxide","Hydrogen"],correct:2},
+  {question:"Which organ in the human body pumps blood?",answers:["Lungs","Heart","Liver","Kidneys"],correct:1},
+  {question:"Which celebrity starred in 'Black Panther' movie?",answers:["Michael B. Jordan","Chadwick Boseman","Idris Elba","Anthony Mackie"],correct:1},
+  {question:"Which Nigerian musician won Best International Act at BET 2021?",answers:["Burna Boy","Wizkid","Tems","Davido"],correct:1},
+  {question:"Which footballer won the Ballon d'Or 2023?",answers:["Messi","Ronaldo","Mbappe","Neymar"],correct:0},
+  {question:"Which Nigerian state has its capital at Maiduguri?",answers:["Borno","Adamawa","Bauchi","Yobe"],correct:0},
+  {question:"Which movie won the Oscar for Best Picture in 2022?",answers:["CODA","Dune","Belfast","The Power of the Dog"],correct:0},
+  {question:"Who is Nigeria's Vice President as of 2026?",answers:["Yemi Osinbajo","Namadi Sambo","Atiku Abubakar","Goodluck Jonathan"],correct:0},
+  {question:"Which layer of the atmosphere contains the ozone layer?",answers:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],correct:1},
+  {question:"Which continent is the second largest by land area?",answers:["Africa","Asia","Europe","South America"],correct:0},
+  {question:"Which vitamin is produced when the skin is exposed to sunlight?",answers:["Vitamin A","Vitamin B12","Vitamin D","Vitamin C"],correct:2},
+  {question:"Which Nigerian celebrity is known as 'Mama Burna'?",answers:["Tems","Burna Boy","Wizkid","Tiwa Savage"],correct:3},
+  {question:"Which Nigerian musician collaborated with Beyoncé on 'Brown Skin Girl'?",answers:["Wizkid","Burna Boy","Tems","Davido"],correct:0},
+  {question:"Which country has hosted the most FIFA World Cups?",answers:["Germany","Italy","Brazil","Mexico"],correct:2},
+  {question:"Which Nigerian state has its capital at Owerri?",answers:["Imo","Enugu","Abia","Anambra"],correct:0},
+  {question:"Who played Jack Sparrow in 'Pirates of the Caribbean'?",answers:["Orlando Bloom","Johnny Depp","Leonardo DiCaprio","Brad Pitt"],correct:1},
+  {question:"Which political party did Goodluck Jonathan belong to?",answers:["APC","PDP","LP","NNPP"],correct:1},
+  {question:"Which desert is located in northern Africa?",answers:["Sahara","Kalahari","Gobi","Namib"],correct:0},
+  {question:"Which river forms part of the border between Nigeria and Benin?",answers:["Niger","Benue","Ogun","Cross"],correct:2},
+  {question:"What is the chemical symbol for Gold?",answers:["Au","Ag","Gd","Go"],correct:0},
+  {question:"Which human cells carry oxygen?",answers:["White Blood Cells","Red Blood Cells","Platelets","Plasma"],correct:1},
+  {question:"Which celebrity starred in 'Euphoria' TV series?",answers:["Zendaya","Millie Bobby Brown","Emma Watson","Saoirse Ronan"],correct:0},
+  {question:"Which Nigerian musician won Best African Act at MTV EMA 2021?",answers:["Burna Boy","Wizkid","Tems","Davido"],correct:1},
+  {question:"Which footballer scored the winning goal for Argentina in 2022 World Cup final?",answers:["Messi","Di Maria","Mbappe","Dybala"],correct:0},
+  {question:"Which Nigerian state has its capital at Lokoja?",answers:["Kogi","Kwara","Niger","Benue"],correct:0},
+  {question:"Which movie features the song 'Shallow' by Lady Gaga?",answers:["A Star Is Born","La La Land","The Greatest Showman","Frozen"],correct:0},
+  {question:"Who is the current Senate President of Nigeria as of 2026?",answers:["Godswill Akpabio","Ahmed Lawan","Bukola Saraki","David Mark"],correct:1},
+  {question:"Which layer of Earth is solid and under the crust?",answers:["Mantle","Outer Core","Inner Core","Lithosphere"],correct:0},
+  {question:"Which continent is known for the Amazon rainforest?",answers:["Africa","South America","Asia","Europe"],correct:1},
+  {question:"Which vitamin helps in blood clotting?",answers:["Vitamin C","Vitamin K","Vitamin D","Vitamin A"],correct:1},
+  {question:"Which Nigerian celebrity starred in 'King of Boys'?",answers:["Sola Sobowale","Funke Akindele","Genevieve Nnaji","Omotola Jalade"],correct:0},
+  {question:"Which Nigerian musician collaborated with Chris Brown on 'Call Me Every Day'?",answers:["Wizkid","Burna Boy","Tems","Davido"],correct:3},
+  {question:"Which country has won the most FIFA Women's World Cups?",answers:["USA","Germany","Norway","Brazil"],correct:0},
+  {question:"Which Nigerian state has its capital at Yola?",answers:["Adamawa","Bauchi","Borno","Kano"],correct:0},
+  {question:"Who played Tony Stark / Iron Man in the MCU?",answers:["Chris Evans","Robert Downey Jr.","Chris Hemsworth","Mark Ruffalo"],correct:1},
+  {question:"Which political party did Muhammadu Buhari belong to?",answers:["APC","PDP","LP","NNPP"],correct:0},
+  {question:"Which desert stretches across northern China and southern Mongolia?",answers:["Gobi","Sahara","Kalahari","Thar"],correct:0},
+  {question:"Which river is known as the longest in South America?",answers:["Amazon","Nile","Mississippi","Congo"],correct:0},
+  {question:"What is the chemical symbol for Sodium?",answers:["Na","S","So","Sn"],correct:0},
+  {question:"Which organ filters waste from the blood?",answers:["Liver","Kidneys","Heart","Lungs"],correct:1},
+  {question:"Which celebrity starred as Spider-Man in the MCU?",answers:["Andrew Garfield","Tom Holland","Tobey Maguire","Jake Johnson"],correct:1},
+  {question:"Which Nigerian musician won Best International Flow at BET Hip Hop 2022?",answers:["Wizkid","Burna Boy","Tems","Davido"],correct:1},
+  {question:"Which footballer is known as CR7?",answers:["Messi","Ronaldo","Neymar","Mbappe"],correct:1},
+  {question:"Which Nigerian state has its capital at Bauchi?",answers:["Bauchi","Gombe","Adamawa","Yobe"],correct:0},
+  {question:"Which movie features 'Let It Go' song?",answers:["Frozen","Moana","Tangled","Brave"],correct:0},
+  {question:"Who is the current Chief Justice of Nigeria as of 2026?",answers:["Olukayode Ariwoola","Walter Onnoghen","Mahmoud Mohammed","Ifeoma Nwobodo"],correct:0},
+  {question:"Which layer of the atmosphere is closest to Earth?",answers:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],correct:0},
+  {question:"Which continent is home to the Sahara Desert?",answers:["Africa","Asia","Europe","North America"],correct:0},
+  {question:"Which vitamin is important for vision?",answers:["Vitamin A","Vitamin B12","Vitamin D","Vitamin K"],correct:0},
+  {question:"Which Nigerian celebrity starred in 'The Wedding Party'?",answers:["Banky W","Funke Akindele","Genevieve Nnaji","Mercy Johnson"],correct:2},
+  {question:"Which Nigerian musician released the song 'Essence'?",answers:["Tems","Wizkid","Burna Boy","Davido"],correct:1},
+  {question:"Which country hosted the 2016 Summer Olympics?",answers:["China","UK","Brazil","Russia"],correct:2},
+  {question:"Which Nigerian state has its capital at Port Harcourt?",answers:["Rivers","Bayelsa","Delta","Akwa Ibom"],correct:0},
+  {question:"Who starred in the movie 'Titanic'?",answers:["Leonardo DiCaprio","Brad Pitt","Johnny Depp","Tom Cruise"],correct:0},
+  {question:"Which political party is Bola Tinubu affiliated with?",answers:["APC","PDP","LP","NNPP"],correct:0},
+  {question:"Which desert is found in northern Africa?",answers:["Sahara","Kalahari","Gobi","Atacama"],correct:0},
+  {question:"Which river flows through Egypt?",answers:["Nile","Amazon","Mississippi","Yangtze"],correct:0},
+  {question:"Which element has the symbol 'Fe'?",answers:["Iron","Fluorine","Francium","Fermium"],correct:0},
+  {question:"Which blood component helps in clotting?",answers:["Platelets","Red Blood Cells","White Blood Cells","Plasma"],correct:0},
+  {question:"Which celebrity starred as Eleven in 'Stranger Things'?",answers:["Millie Bobby Brown","Zendaya","Emma Watson","Saoirse Ronan"],correct:0},
+  {question:"Which Nigerian musician is known for 'Ye' song?",answers:["Burna Boy","Wizkid","Davido","Tems"],correct:2},
+  {question:"Which footballer scored the most goals in 2022 World Cup?",answers:["Mbappe","Messi","Ronaldo","Neymar"],correct:1},
+  {question:"Which Nigerian state has its capital at Kaduna?",answers:["Kaduna","Kano","Katsina","Niger"],correct:0},
+  {question:"Which movie features characters 'Elsa' and 'Anna'?",answers:["Frozen","Moana","Tangled","Brave"],correct:0},
+  {question:"Who is Nigeria's Minister of Finance as of 2026?",answers:["Zainab Ahmed","Ngozi Okonjo-Iweala","Kemi Adeosun","Muhammad Bello"],correct:0},
+  {question:"Which layer of Earth is just below the crust?",answers:["Mantle","Outer Core","Inner Core","Lithosphere"],correct:0},
+  {question:"Which continent is Australia part of?",answers:["Oceania","Asia","Europe","South America"],correct:0},
+  {question:"Which vitamin is important for strong bones?",answers:["Vitamin A","Vitamin C","Vitamin D","Vitamin K"],correct:2},
+  {question:"Which Nigerian celebrity starred in 'Lionheart'?",answers:["Genevieve Nnaji","Funke Akindele","Omotola Jalade","Mercy Johnson"],correct:0},
+  {question:"Which Nigerian musician featured on 'Essence' remix with Justin Bieber?",answers:["Tems","Wizkid","Burna Boy","Davido"],correct:1},
+  {question:"Which country won the 2018 FIFA World Cup?",answers:["France","Germany","Brazil","Argentina"],correct:0},
+  {question:"Which Nigerian state has its capital at Owerri?",answers:["Imo","Enugu","Abia","Anambra"],correct:0},
+  {question:"Who starred in 'Iron Man' movies?",answers:["Chris Evans","Robert Downey Jr.","Chris Hemsworth","Mark Ruffalo"],correct:1},
+  {question:"Which political party is Atiku Abubakar affiliated with?",answers:["APC","PDP","LP","NNPP"],correct:1},
+  {question:"Which desert is in northern China and southern Mongolia?",answers:["Gobi","Sahara","Kalahari","Thar"],correct:0},
+  {question:"Which river is the longest in Africa?",answers:["Nile","Congo","Niger","Zambezi"],correct:0},
+  {question:"Which element has the symbol 'Na'?",answers:["Sodium","Nitrogen","Neon","Nickel"],correct:0},
+  {question:"Which organ pumps blood throughout the body?",answers:["Liver","Heart","Kidney","Lungs"],correct:1},
+  {question:"Which celebrity stars as Spider-Man in MCU?",answers:["Andrew Garfield","Tom Holland","Tobey Maguire","Jake Johnson"],correct:1},
+  {question:"Which Nigerian musician won Best International Flow at BET Hip Hop 2022?",answers:["Wizkid","Burna Boy","Tems","Davido"],correct:1},
+  {question:"Which footballer is known as CR7?",answers:["Messi","Ronaldo","Neymar","Mbappe
